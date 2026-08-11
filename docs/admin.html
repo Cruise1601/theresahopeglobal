@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TheresaHopeGlobal Admin Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="admin-hero">
+      <div>
+        <p class="eyebrow">Administrator Dashboard</p>
+        <h1>All Appointments</h1>
+        <p>View confirmed sessions, appointment details, and booking status in one place.</p>
+      </div>
+      <a class="secondary-link" href="index.html">← Back to booking</a>
+    </header>
+
+    <main class="container admin-container">
+      <section class="admin-panel">
+        <div class="admin-controls">
+          <button id="refresh-btn" class="primary-button">Refresh Appointments</button>
+          <span class="hint">Admin key is stored in the server for private access.</span>
+        </div>
+        <div class="table-wrapper">
+          <table id="appointments-table">
+            <thead>
+              <tr>
+                <th>Reference</th>
+                <th>Service</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Client</th>
+                <th>Duration</th>
+                <th>Price (USD)</th>
+                <th>Payment</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const ADMIN_KEY = "theresa-admin-2026";
+      const refreshBtn = document.getElementById("refresh-btn");
+      const tableBody = document.querySelector("#appointments-table tbody");
+
+      async function loadAppointments() {
+        try {
+          const response = await fetch(`/api/admin/appointments?key=${ADMIN_KEY}`);
+          if (!response.ok) {
+            throw new Error("Unable to load appointments.");
+          }
+          const data = await response.json();
+          renderAppointments(data.appointments);
+        } catch (error) {
+          tableBody.innerHTML = `<tr><td colspan="8" class="error-row">${error.message}</td></tr>`;
+        }
+      }
+
+      function renderAppointments(items = []) {
+        if (items.length === 0) {
+          tableBody.innerHTML = `<tr><td colspan="8">No confirmed appointments yet.</td></tr>`;
+          return;
+        }
+        tableBody.innerHTML = items
+          .map(
+            (appointment) => `
+            <tr>
+              <td>${appointment.reference}</td>
+              <td>${appointment.serviceName}</td>
+              <td>${appointment.date}</td>
+              <td>${formatTimeLabel(appointment.time)}</td>
+              <td>${appointment.client.name}<br /><a href="mailto:${appointment.client.email}">${appointment.client.email}</a></td>
+              <td>${appointment.duration} min</td>
+              <td>$${appointment.price}</td>
+              <td>${appointment.paymentStatus}</td>
+            </tr>`
+          )
+          .join("");
+      }
+
+      function formatTimeLabel(time) {
+        const [hour, minute] = time.split(":").map(Number);
+        const date = new Date();
+        date.setHours(hour, minute, 0, 0);
+        return date.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" });
+      }
+
+      refreshBtn.addEventListener("click", loadAppointments);
+      loadAppointments();
+    </script>
+  </body>
+</html>
