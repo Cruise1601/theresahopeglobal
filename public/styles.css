@@ -8,9 +8,6 @@
   --transition: all 0.3s ease;
   font-family: 'Poppins', sans-serif;
   color: var(--text-color);
-  background: linear-gradient(rgba(43, 24, 66, 0.6), rgba(43, 24, 66, 0.6)), url('bg.jpg');
-  background-size: cover;
-  background-position: center;
 }
 
 * {
@@ -28,8 +25,8 @@ body {
 }
 
 body {
-  background: radial-gradient(circle at top, rgba(145, 92, 182, 0.12), transparent 33%), linear-gradient(180deg, #f8f5ff 0%, #fcfbff 100%);
-  color: #1b143f;
+  background: var(--light-grey);
+  color: var(--text-color);
   line-height: 1.6;
 }
 
@@ -176,7 +173,7 @@ button {
 }
 
 .hero {
-  background: linear-gradient(rgba(43, 24, 66, 0.6), rgba(43, 24, 66, 0.6)), url('bg.jpg');
+  background: linear-gradient(rgba(43, 24, 66, 0.6), rgba(43, 24, 66, 0.6)), url('images/hero.jpg');
   background-size: cover;
   background-position: center;
   height: 80vh;
@@ -204,7 +201,7 @@ button {
 .hero-content p {
   margin: 1.5rem 0 2rem;
   max-width: 680px;
-  color: #5c4d7f;
+  color: var(--white);
   font-size: 1.05rem;
 }
 
