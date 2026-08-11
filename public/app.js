@@ -427,9 +427,9 @@ function showConfirmation() {
   bookingNote.textContent = "Thank you! Your appointment is now confirmed.";
 }
 
-openBookingBtn.addEventListener("click", openBooking);
-openBookingCtaBtn.addEventListener("click", openBooking);
-closeBookingBtn.addEventListener("click", closeBooking);
+openBookingBtn?.addEventListener("click", openBooking);
+openBookingCtaBtn?.addEventListener("click", openBooking);
+closeBookingBtn?.addEventListener("click", closeBooking);
 backBtn.addEventListener("click", () => {
   if (state.step === 1) return;
   if (state.step === 6) {
