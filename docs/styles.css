@@ -1,13 +1,16 @@
 :root {
+  --primary-dark: #2B1842;
+  --primary-purple: #4A2B6F;
+  --accent-gold: #D4AF37;
+  --white: #FFFFFF;
+  --text-color: #333333;
+  --light-grey: #F4F4F4;
+  --transition: all 0.3s ease;
   font-family: 'Poppins', sans-serif;
-  color: #1b143f;
-  background: #f8f4ff;
-  --primary: #6f42c1;
-  --primary-dark: #4f248f;
-  --surface: #ffffff;
-  --surface-soft: #f7f1ff;
-  --text-soft: #5e4f7b;
-  --border: rgba(111, 66, 193, 0.18);
+  color: var(--text-color);
+  background: linear-gradient(rgba(43, 24, 66, 0.6), rgba(43, 24, 66, 0.6)), url('bg.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
 * {
@@ -146,34 +149,40 @@ button {
 }
 
 .btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-  border: none;
-  border-radius: 999px;
-  padding: 0.95rem 1.55rem;
+  padding: 12px 25px;
+  border-radius: 6px;
+  text-decoration: none;
   font-weight: 600;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-}
-
-.btn:hover {
-  transform: translateY(-1px);
+  transition: var(--transition);
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--primary), #7e3bcf);
-  color: #ffffff;
-  box-shadow: 0 22px 40px rgba(111, 66, 193, 0.18);
+  background: var(--primary-purple);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
 }
 
 .btn-secondary {
-  background: rgba(111, 66, 193, 0.08);
+  border: 2px solid var(--white);
+  color: var(--white);
+}
+
+.btn-secondary:hover {
+  background: var(--white);
   color: var(--primary-dark);
 }
 
 .hero {
-  padding: 5rem 0 3rem;
+  background: linear-gradient(rgba(43, 24, 66, 0.6), rgba(43, 24, 66, 0.6)), url('bg.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  color: var(--white);
 }
 
 .hero-inner {
@@ -184,12 +193,12 @@ button {
 
 .hero-content h1 {
   margin: 0;
-  font-size: clamp(2.8rem, 5vw, 4.5rem);
-  line-height: 1.05;
+  font-size: 3.5rem;
+  margin-bottom: 20px;
 }
 
 .hero-content h1 span {
-  color: var(--primary);
+  color: var(--accent-gold);
 }
 
 .hero-content p {
@@ -201,9 +210,16 @@ button {
 
 .badge-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
-  margin-bottom: 2rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin: 30px 0;
+}
+
+.badge {
+  background: rgba(255,255,255,0.1);
+  padding: 15px;
+  border-radius: 8px;
+  backdrop-filter: blur(5px);
 }
 
 .badge {
