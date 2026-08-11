@@ -17,6 +17,10 @@
   box-sizing: border-box;
 }
 
+.hidden {
+  display: none !important;
+}
+
 html,
 body {
   margin: 0;
@@ -402,6 +406,89 @@ a {
 
 .testimonial-card span {
   color: #7c6d91;
+}
+
+.resources-section,
+.faq-section,
+.contact-section {
+  margin-top: 3rem;
+}
+
+.resources-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(420px, 0.95fr);
+  gap: 2rem;
+  align-items: center;
+}
+
+.resource-list {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.resource-list a {
+  display: inline-block;
+  padding: 1rem 1.2rem;
+  border-radius: 1.25rem;
+  background: rgba(111, 66, 193, 0.08);
+  color: var(--purple-dark);
+  font-weight: 600;
+}
+
+.resource-image-wrapper {
+  border-radius: 2rem;
+  overflow: hidden;
+  box-shadow: 0 35px 95px rgba(85, 60, 134, 0.16);
+}
+
+.resource-image {
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  object-fit: cover;
+}
+
+.faq-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.faq-card {
+  padding: 1.8rem;
+  background: var(--surface);
+  border-radius: 1.75rem;
+  border: 1px solid rgba(111, 66, 193, 0.1);
+}
+
+.faq-card h3 {
+  margin: 0 0 0.75rem;
+  color: var(--purple-dark);
+}
+
+.contact-card {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 2rem;
+  padding: 2rem;
+  background: var(--surface);
+  border-radius: 2rem;
+  border: 1px solid rgba(111, 66, 193, 0.12);
+}
+
+.contact-details {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.contact-details strong {
+  color: var(--purple-dark);
+}
+
+.contact-card a {
+  color: var(--purple-dark);
+  font-weight: 700;
 }
 
 .cta-banner {
